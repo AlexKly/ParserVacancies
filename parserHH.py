@@ -45,7 +45,7 @@ def dist_salary(salary_type, USD_VALUE, EUR_VALUE):
             coef_currency = 1
         elif salary_type['currency'] == 'USD':
             coef_currency = USD_VALUE['Value']
-        elif salary_type == 'EUR':
+        elif salary_type['currency'] == 'EUR':
             coef_currency = EUR_VALUE['Value']
 
         if salary_type['from'] is not None and salary_type['to'] is not None:
