@@ -153,7 +153,23 @@ def doParse(title, area, chat_id):
                                   config.CSV_HEADERS[8]: list_logo_url,
                                   config.CSV_HEADERS[9]: list_type_work})
 
-        df.to_excel(config.CSV_FILENAME + str(chat_id) + config.CSV_FORMAT, engine='xlsxwriter')
+        writer = config.pd.ExcelWriter(config.CSV_FILENAME + str(chat_id) + config.CSV_FORMAT)
+        df.to_excel(writer, sheet_name=config.CSV_SHEETNAME, engine='xlsxwriter', startrow=1)
+
+        # Auto-adjust columns' width
+        writer.sheets[config.CSV_SHEETNAME].set_column(1, 1, 75)
+        writer.sheets[config.CSV_SHEETNAME].set_column(2, 2, 25)
+        writer.sheets[config.CSV_SHEETNAME].set_column(3, 3, 25)
+        writer.sheets[config.CSV_SHEETNAME].set_column(4, 4, 75)
+        writer.sheets[config.CSV_SHEETNAME].set_column(5, 5, 35)
+        writer.sheets[config.CSV_SHEETNAME].set_column(6, 6, 35)
+        writer.sheets[config.CSV_SHEETNAME].set_column(6, 6, 45)
+        writer.sheets[config.CSV_SHEETNAME].set_column(7, 7, 35)
+        writer.sheets[config.CSV_SHEETNAME].set_column(8, 8, 35)
+        writer.sheets[config.CSV_SHEETNAME].set_column(9, 9, 55)
+        writer.sheets[config.CSV_SHEETNAME].set_column(10, 10, 25)
+
+        writer.save()
 
         num_vacancies = len(list_title)
         values_stats = form_dist_salary(list_dist_salary=list_dist_salary, step_salary=config.STEP_VALUE, user_id=chat_id)
