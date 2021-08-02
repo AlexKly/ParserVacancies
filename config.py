@@ -20,10 +20,14 @@ STEP_VALUE = 5000
 hh_href = 'https://api.hh.ru/vacancies'
 currency_href = 'https://www.cbr-xml-daily.ru/daily_json.js'
 
-CSV_FILENAME = 'Vacancies.xlsx'
+CSV_FILENAME = 'Vacancies_'
+CSV_FORMAT = '.xlsx'
 CSV_SHEETNAME = 'Sheet Vacancies'
 CSV_HEADERS = ['Заголовок', 'Город', 'Зарплата', 'Адрес', 'Станция метро', 'Комания', 'Дата публикации', 'Ссылка',
                'Лого', 'Занятость']
+
+DISTRIBUTION_FILENAME = 'dist_salary_'
+DISTRIBUTION_FORMAT = '.png'
 
 token = '1906316193:AAGUum1mvgncDVA3EgL6npBWJIAu-4ybH5E'
 db_file = "database.vdb"
